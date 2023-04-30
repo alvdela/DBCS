@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="row tableTitle">
+      <div class="col-sm-11 title">
+        <h1>Inicio de sesión</h1>
+      </div>
+    </div>
+  <div class="col-sm-12 formulario">
+    <form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="email">Email</label>
+          <input type="text" class="form-control" required name="email" [(ngModel)]="usuario.email" pattern="[a-zA-ZñÑ0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$" placeholder="Introduzca su correo"/>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="password">Contraseña</label>
+          <input type="password" class="form-control" required name="password" [(ngModel)]="usuario.password" pattern="[A-Za-z0-9._%+-]{8,20}"
+          placeholder="Introduzca su contraseña"/>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-offset-2 col-sm-12 submitBtn">
+          <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.form.valid">
+            Login
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+

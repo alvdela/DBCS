@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/API_Reservas/API_Reservas.iml" filepath="$PROJECT_DIR$/API_Reservas/API_Reservas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/API_validacion/practica 3.iml" filepath="$PROJECT_DIR$/API_validacion/practica 3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/practica-3-grupo-1.iml" filepath="$PROJECT_DIR$/.idea/practica-3-grupo-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/API_usuarios/practica1.iml" filepath="$PROJECT_DIR$/API_usuarios/practica1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/API_usuarios/practica3.iml" filepath="$PROJECT_DIR$/API_usuarios/practica3.iml" />
+    </modules>
+  </component>
+</project>

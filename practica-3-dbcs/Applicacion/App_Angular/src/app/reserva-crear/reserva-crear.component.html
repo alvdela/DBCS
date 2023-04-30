@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="row tableTitle">
+      <div class="col-sm-11 title">
+        <h1>Nueva Reserva</h1>
+      </div>
+    </div>
+  <div class="col-sm-12 formulario">
+    <form (ngSubmit)="onSubmit()" #ReservaForm="ngForm">
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label">Nombre de la reserva</label>
+          <input type="text" class="form-control" required
+            [(ngModel)]="reserva.guestName" name="nombre" pattern="[A-Za-zñÑ0-9]{4,16}" placeholder="Introduzca un nombre"/>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label">Número de habitaciones</label>
+          <input type="number" class="form-control" required [(ngModel)]="reserva.units" min="1" max="10" value="1" name="units"/>
+        </div>
+        <div></div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label">Número de huespedes</label>
+          <input type="number" class="form-control" required [(ngModel)]="reserva.numGuest" min="1" max="30" value="1" name="firstName"/>
+          <p class="numGuestAdvice">Máximo tres por habitación</p>
+        </div>
+        <div></div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label">Fecha de entrada</label>
+          <input type="date" class="form-control" required [(ngModel)]="reserva.dateIn" min='2023-02-01' max='2024-01-01' value='2023-02-01' name="dateIn"/>
+        </div>
+        <div></div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label">Fecha de salida</label>
+          <input type="date" class="form-control" required [(ngModel)]="reserva.dateOut" min='2023-02-15' max='2024-01-01' value='2023-02-15' name="dateOut"
+          (change)="setFechasDisponibles(reserva.dateIn,reserva.dateOut)"/>
+          <p class="numGuestAdvice">Indicar fechas para ver la disponibilidad</p>
+        </div>
+        <div></div>
+      </fieldset>
+
+      <fieldset>
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th class="text-center">Fechas disponibles</th>
+            <th class="text-center">Nº habitaciones</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let fecha of FechasDisponibles">
+            <td>{{fecha}}</td>
+            <td>10</td>
+          </tr>
+
+          </tbody>
+        </table>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-offset-2 col-sm-12 submitBtn">
+          <button type="submit" class="btn btn-primary" [disabled]="!ReservaForm.form.valid">
+            Crear Reserva
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+

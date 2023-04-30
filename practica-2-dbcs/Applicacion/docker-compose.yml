@@ -1,0 +1,69 @@
+version: '3.4'
+
+volumes:
+  kong_data: {}
+  users_data: {}
+
+networks:
+  kong-net:
+
+services:
+
+  front:
+    image: my-angular-app
+    build:
+      context: ./App_Angular
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4200:80"
+    networks:
+      - kong-net
+    depends_on:
+      - api_validacion
+
+  api_usuarios:
+    image: api_usuarios
+    build:
+      context: ./API_usuarios
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - kong-net
+    environment:
+      - SPRING_DATASOURCE_URL:=jdbc:mysql://usuariodatabase:3306/usuarios?createDatabaseIfNotExist=true
+    depends_on:
+      - usuariodatabase
+
+  api_validacion:
+    image: api_validacion
+    build:
+      context: ./API_validacion
+      dockerfile: ./Dockerfile
+    ports:
+      - 8081:8081
+    networks:
+      - kong-net
+    depends_on:
+      - api_usuarios
+
+  usuariodatabase:
+    image: mysql
+    hostname: usuariodatabase
+    cap_add:
+      - SYS_NICE
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    networks:
+      - kong-net
+    volumes:
+      - users_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_DATABASE: usuarios
+      MYSQL_ROOT_HOST: '%'
+

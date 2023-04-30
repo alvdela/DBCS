@@ -1,0 +1,27 @@
+Para esta entrega existen dos formas de desplegar la aplicación:
+-->En la primera, comienza como la anterior:
+Primero desplegamos la API Usuarios desde el proyecto con nombre "API_usuarios", para ello:
+1- En la carpeta de "resources" editamos el archivo "application.properties" con:
+spring.datasource.username="user"
+spring.datasource.password="password"
+Siendo "user" el nombre del usuario de la base de datos y "password" su contraseña.
+2- Ejecutamos el main con nombre "UserApplication.java"
+Si todo va bien ya tendríamos nuestra API Rest en marcha
+
+En esta ocasión antes de pasar al cliente angular debemos desplegar también la API de validación, para ello:
+Ejecutamos el main con nombre "ValidationApplication.java" desde el proyecto con nombre "API_validacion".
+Bastaría con esto y no debería dar problemas (aunque esta API tiene como requisito para funcionar que esté
+desplegada la de usuarios)
+
+Para desplegar nuestro cliente angular:
+Mediante el comando "ng serve" en un terminal dentro de la carpeta del proyecto Angular,
+en nuestro caso tiene el nombre "App_Angular". Esto compilará la aplicación y la desplegará 
+en el servidor Node. Este escucha en el puerto 4200, por lo que para ver el resultado hay 
+que ir al navegador y escribir: “localhost:4200”
+
+-->En la segunda forma:
+Dentro de la carpeta "Application" que actúa como carpeta madre de nuestros componentes abrimos un terminal
+y ejecutamos: docker-compose up
+Esto contenizará automáticamente todos nuestros componentes y los despliega, si todo va bien no habría que
+hacer nada más que ir al navegador y escribir: “localhost:4200” que es donde escucha nuestra app Angular.
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<body>
+  <a class="logoutBtn" (click)="logout()"><img class="logoutIcon"
+    src="../assets/img/logoutIcon.png"></a>
+  <div class="container">
+    <div class="row tableTitle">
+      <div class="col-sm-6 title">
+        <h1>Gestión de reservas</h1>
+      </div>
+      <div class="col-sm-6">
+        <a class="btn btn-secondary newUserBtn" [routerLink]="['/usuarios/{{usuario.id}}/reservas/crear']" *ngIf="!isHost()"><img class="addIcon"
+            src="../assets/img/addIcon.png"><span>Nueva Reserva</span></a>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th *ngIf="isHost()">Nombre</th>
+            <th>Email</th>
+            <th>Precio</th>
+            <th>Nº hab.</th>
+            <th>Huespedes</th>
+            <th>Estado</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            <th>Creacion</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let reserva of Reservas">
+            <td>{{reserva.id}}</td>
+            <td *ngIf="isHost()"><input #name (change)="modifyReserva(reserva.id,reserva.status,name.value)" type="text" id="name" name="name" value={{reserva.guestName}}></td>
+            <td>{{reserva.guestEmail}}</td>
+            <td>{{reserva.price}}</td>
+            <td>{{reserva.units}}</td>
+            <td >{{reserva.numGuest}}</td>
+            <td *ngIf="!isHost()">{{reserva.status}}</td>
+            <td *ngIf="isHost()"><select #enabledSelector class="enabledSelector"
+              (change)="modifyReserva(reserva.id,enabledSelector.value,reserva.guestName)">
+              <option value="Pending" [selected]="reserva.status == 'Pending'">Pending</option>
+              <option value="Confirmed" [selected]="reserva.status == 'Confirmed'">Confirmed</option>
+              <option value="Cancelled" [selected]="reserva.status == 'Cancelled'">Cancelled</option>
+            </select></td>
+            <td>{{reserva.dateIn}}</td>
+            <td>{{reserva.dateOut}}</td>
+            <td>{{reserva.created_at}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

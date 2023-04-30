@@ -1,0 +1,18 @@
+Primero desplegamos la API Rest desde el proyecto con nombre "practica 1", para ello:
+1- En la carpeta de "resources" editamos el archivo "application.properties" con:
+spring.datasource.username="user"
+spring.datasource.password="password"
+Siendo "user" el nombre del usuario de la base de datos y "password" su contraseña.
+2- Ejecutamos el main con nombre "Practica1Application.java"
+Si todo va bien ya tendríamos nuesta API Rest en marcha
+
+Para desplegar nuestro cliente angular tenemos dos opciones (la API tiene que estar en funcionamiento):
+
+1º- Mediente el comando "ng serve" en un terminal dentro de la carpeta del proyecto Angular,
+en nuestro caso tiene el nombre "prac1Angular". Esto compilará la aplicación y la desplegará 
+en el servidor Node. Este escucha en el puerto 4200, por lo que para ver el resultado hay 
+que ir al navegador y escribir: “localhost:4200”
+
+2º- Mediente en index.html en ..\prac1Angular\dist\prac1-angular.
+Puesto que esto se ejecuta en el lado del cliente, se deberá poder ejecutar directamente 
+en un navegador.

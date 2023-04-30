@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="row tableTitle">
+      <div class="col-sm-11 title">
+        <h1>Gestión del usuario</h1>
+      </div>
+    </div>
+  <div class="col-sm-12 formulario">
+    <form (ngSubmit)="onSubmit(password.value,passwordConfirm.value)" #usuarioForm="ngForm">
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="nombre">Nombre de usuario</label>
+          <input type="text" class="form-control" disabled
+            [(ngModel)]="usuario.name" name="nombre" pattern="[a-zñ0-9._%+-]{4,16}" placeholder="Introduzca su nombre de usuario"/>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="firstName">Nombre</label>
+          <input type="text" class="form-control" required [(ngModel)]="usuario.firstName" name="firstName" pattern="[A-Zña-z ]{3,16}" placeholder="Introduzca su nombre"/>
+        </div>
+        <div></div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="lastName">Apellidos</label>
+          <input type="text" class="form-control" required [(ngModel)]="usuario.lastName" name="lastName" pattern="[A-Zña-z ]{3,30}" placeholder="Introduzca sus apellidos"/>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="email">Email</label>
+          <input type="text" class="form-control" required [(ngModel)]="usuario.email" name="email" pattern="[a-zñ0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Introduzca su correo"/>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="password">Nueva contraseña</label>
+          <input type="password" class="form-control" required #password name="password" pattern="[A-Za-z0-9._%+-]{8,20}" placeholder="Introduzca su nueva contraseña"/>
+          <p class="PasswAdvice">Mínimo ocho caracteres, combinando letras, números y símbolos</p>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="password">Confirmar nueva contraseña</label>
+          <input type="password" class="form-control" #passwordConfirm placeholder="Confirme la nueva contraseña"/>
+          <p class="PasswAdvice">Si no desea modificar la contraseña deje la confirmación en blanco</p>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-3">
+          <label class="control-label" for="rol">Rol</label>
+          <select name="rol" id="rol" class="form-control" disabled 
+            [(ngModel)]="usuario.role">
+            <option value="host">Host</option>
+            <option value="guest">Guest</option>
+          </select>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <div class="col-sm-offset-2 col-sm-12 submitBtn">
+          <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.form.valid">
+            Enviar
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

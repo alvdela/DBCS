@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<body>
+  <div class="container">
+    <div class="row tableTitle">
+      <div class="col-sm-6 title">
+        <h1>Gestión de usuarios</h1>
+      </div>
+      <div class="col-sm-6">
+        <select #enabledFilter class="form-select form-select-lg mb-3 enabledFilter"
+          (change)="getUsersController(enabledFilter.value)">
+          <option default value="todosFiltro">Mostrar todos</option>
+          <option value="activosFiltro">Usuarios activos</option>
+          <option value="inactivosFiltro">Usuarios inactivos</option>
+        </select>
+        <a class="btn btn-secondary newUserBtn" [routerLink]="['/usuarios/nuevo']"><img class="addIcon"
+            src="../assets/img/addIcon.png"><span>Nuevo Usuario</span></a>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Fecha de creación</th>
+            <th>Última modificación</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let usuario of Usuarios">
+            <td>{{usuario.id}}</td>
+            <td><li class="nameContent">{{usuario.name}}</li></td>
+            <td>{{usuario.firstName}} {{usuario.lastName}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.createdAt}}</td>
+            <td>{{usuario.updatedAt}}</td>
+            <td>{{usuario.role}}</td>
+            <td><select #enabledSelector class="enabledSelector"
+                (change)="activarController(enabledSelector.value,usuario.id)">
+                <option value="activo" [selected]="usuario.enabled == true"><span>🟢</span>Activo</option>
+                <option value="inactivo" [selected]="usuario.enabled == false"><span>🔴</span>Inactivo</option>
+              </select></td>
+            <td>
+              <a class="settings" data-original-title="Settings" [routerLink]="['/usuarios/', usuario.id,'editar']"><img
+                  class="settingsIcon" src="../assets/img/SettingsIcon.png"></a>
+              <a href="#" class="delete" data-original-title="Delete" (click)="borrar(usuario.id)"><img
+                  class="deleteIcon" src="../assets/img/DeleteIcon.png"></a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

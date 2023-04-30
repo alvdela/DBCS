@@ -1,0 +1,72 @@
+.title h1{
+    font-size: 40px;
+}
+.tableTitle{
+    margin-top:7%;
+    margin-bottom: 1%;
+    border-radius: 3px 3px 0 0;
+    background: #3999be;
+    padding: 16px 16px;
+    border-radius: 10px;
+}
+
+.newUserBtn{
+        color: black;
+        float: right;
+        font-size: 22px;
+        background: #fff;
+        min-width: 50px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 5px;
+}
+
+.nameContent{
+    font-weight: bold;
+    color: #5b6372;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.addIcon{
+    width: 25px;
+    height: auto;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.settingsIcon{
+    width: 25px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.deleteIcon{
+    width: 23px;
+    height: auto;
+}
+
+.enabledFilter{
+    font-size: 17px;
+    height: 30px;
+    border-radius: 5px;
+    float: left;
+    margin-top:15px;
+
+}
+
+.enabledSelector{
+    background-color: #f6f1f1;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+}
+
+.table th{
+    font-size: 22px;
+    text-align: center;
+}
+.table td{
+    font-size: 15px;
+    text-align: center;
+}
